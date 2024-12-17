@@ -10,6 +10,8 @@ Quartus prime
 
 **THEORY**
 
+When counter is clocked such that each flip-flop in the counter is triggered at the same time , the counter is called synchronous counter.
+
 **4 bit synchronous UP Counter**
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
@@ -28,19 +30,70 @@ However, the remaining flip-flops should be made ready to toggle only when all l
 
 **Procedure**
 
-/* write all the steps invloved */
+1. Type the program in Quartus software.
+
+2. Compile and run the program.
+
+3. Generate the RTL schematic and save the logic diagram.
+
+4. Create nodes for inputs and outputs to generate the timing diagram.
+
+5. For different input combinations generate the timing diagram.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+Program for flipflops and verify its truth table in quartus using Verilog programming. 
 
-Developed by: RegisterNumber:
-*/
+**Developed by: Tauqir Ahmed S**
+
+**RegisterNumber: 24013512**
+
+module Synchronous_Counter(clk, rst, q);
+
+ input clk;
+ 
+ input rst;
+ 
+ output [3:0]q;
+
+reg [3:0]q;
+
+reg [3:0]x=0;
+
+always @ (posedge(clk) or posedge(rst))
+
+begin
+
+if (rst==1'b1)
+
+begin
+
+q=4'b0;
+
+end
+
+else
+
+begin
+
+x=x+1'b1;
+
+end
+
+q=x;
+
+end
+
+endmodule
 
 **RTL LOGIC UP COUNTER**
 
+![Screenshot 2024-12-17 192123](https://github.com/user-attachments/assets/d64a28b2-0c7d-484c-80e9-d449936fc3fc)
+
 **TIMING DIAGRAM FOR IP COUNTER**
 
-**TRUTH TABLE**
+![Screenshot 2024-12-17 192300](https://github.com/user-attachments/assets/4062316e-0dc3-45b9-8007-739e1fc90faf)
 
 **RESULTS**
+
+The Synchronous Up Counter was implemented successfully using Verilog, and its functionality was validated through simulation. The output matches the expected functional table of the Synchronous Up Counter.
